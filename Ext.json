@@ -1,0 +1,200 @@
+{
+    "About": {
+        "Name": "HID Device Object",
+        "Author": "Conceptgame",
+        "Copyright": "Copyright (C) 2014 Conceptgame",
+        "Comment": "Communication with HID device",
+        "URL": "",
+        "Help": "Help/HIDDevice/Example.chm",
+        "Identifier": "HIDD"
+    },
+    "ActionMenu": [
+		"Separator",
+        [
+            0,
+            "EnumerateAllDevices"
+        ],
+		[
+            1,
+            "Open Device"
+        ],
+		[
+            2,
+            "Close Device"
+        ],
+		[
+            3,
+            "Send report"
+        ],
+        "Separator"
+    ],
+    "ConditionMenu": [
+        [
+            0,
+            "Is device opened?"
+        ],
+		[
+            1,
+            "On Data Received"
+        ]
+    ],
+    "ExpressionMenu": [
+		"Separator",
+        [
+            0,
+            "Device Count"
+        ],
+        [
+            1,
+            "Input Buffer"
+        ],
+		[
+            2,
+            "Manufacturer Name"
+        ],
+		[
+            3,
+            "Product Name"
+        ],
+		[
+            4,
+            "Serial Number"
+        ],
+		[
+            5,
+            "Product Id"
+        ],
+		[
+            6,
+            "Vendor Id"
+        ],
+		[
+            7,
+            "Last Error"
+        ],
+		[
+			8,
+			"Output Buffer Length"
+		]
+    ],
+    "Actions": [
+        {
+            "Title": "Enumerate all devices"
+        },
+		{
+            "Title": "Open Device %0",
+            "Parameters": [
+                [
+                    "Integer",
+                    "Device ID (between 1 and DeviceCount)"
+                ]
+            ]
+        },
+		{
+            "Title": "Close Device"
+        },
+		{
+            "Title": "Send %0 with type %1",
+            "Parameters": [
+                [
+                    "Text",
+                    "Report string"
+                ],
+				[
+                    "Integer",
+                    "Format Type (0=hex 1=ascii)"
+                ]
+            ]
+        }
+    ],
+    "Conditions": [
+		{
+            "Title": "%o : Is device %0 opened",
+			"Parameters": [
+                [
+                    "Integer",
+                    "Device Id (between 1 and DeviceCount)"
+                ]
+			],
+			"Triggered": false
+        },
+		{
+            "Title": "%o : On data received",
+			"Triggered": false
+        }
+    ],
+    "Expressions": [
+        {
+            "Title": "DeviceCount(",
+            "Returns": "Integer"
+        },
+        {
+            "Title": "InputBuffer$(",
+            "Returns": "Text",
+			"Parameters": [
+                [
+                    "Integer",
+                    "Format Type (0=hex 1=ascii)"
+                ]
+			]
+        },
+		{
+            "Title": "ManufacturerName$(",
+            "Returns": "Text",
+			"Parameters": [
+                [
+                    "Integer",
+                    "Device Id (between 1 and DeviceCount)"
+                ]
+			]
+        },
+		{
+            "Title": "ProductName$(",
+            "Returns": "Text",
+			"Parameters": [
+                [
+                    "Integer",
+                    "Device Id (between 1 and DeviceCount)"
+                ]
+			]
+        },
+		{
+            "Title": "SerialNumber$(",
+            "Returns": "Text",
+			"Parameters": [
+                [
+                    "Integer",
+                    "Device Id (between 1 and DeviceCount)"
+                ]
+			]
+        },
+		{
+            "Title": "Product Id(",
+            "Returns": "Text",
+			"Parameters": [
+                [
+                    "Integer",
+                    "Device Id (between 1 and DeviceCount)"
+                ]
+			]
+        },
+		{
+            "Title": "Vendor Id(",
+            "Returns": "Text",
+			"Parameters": [
+                [
+                    "Integer",
+                    "Device Id (between 1 and DeviceCount)"
+                ]
+			]
+        },
+		{
+            "Title": "LastError$(",
+            "Returns": "Text"
+        },
+		{
+            "Title": "OutputBufferLength(",
+            "Returns": "Integer"
+        }
+    ]
+}
