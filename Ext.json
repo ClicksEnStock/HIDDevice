@@ -26,6 +26,10 @@
             3,
             "Send report"
         ],
+		[
+            4,
+            "Send report with Id"
+        ],
         "Separator"
     ],
     "ConditionMenu": [
@@ -103,6 +107,23 @@
 				[
                     "Integer",
                     "Format Type (0=hex 1=ascii)"
+                ]
+            ]
+        },
+		{
+            "Title": "Send %0 with type %1 and id %2",
+            "Parameters": [
+                [
+                    "Text",
+                    "Report string"
+                ],
+				[
+                    "Integer",
+                    "Format Type (0=hex 1=ascii)"
+                ],
+				[
+                    "Integer",
+                    "Report Id"
                 ]
             ]
         }

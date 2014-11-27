@@ -48,8 +48,13 @@ void Extension::CloseDevice()
 	}
 }
 
-//report is the whole string and should conatin Report ID inside
 void Extension::SendReport(TCHAR* report, int formatType)
+{
+	SendReportWithId(report, formatType, 0);
+}
+
+//report is the data string and does not contain the Report
+void Extension::SendReportWithId(TCHAR* report, int formatType, int reportId)
 {
 	BYTE outputbuf[MAX_STRING];
 	int res;
@@ -62,17 +67,18 @@ void Extension::SendReport(TCHAR* report, int formatType)
 	{
 		return;
 	}
-		
+
+	outputbuf[0] = (BYTE)reportId;
 	if (formatType == 0)//hexadecimal
 	{
-		inputN = wcslen(report) / 2;
+		inputN = wcslen(report) / 2 + 1;//+1 for the report id
 		//check that input is an hex string representation
 		if ((wcslen(report) % 2) == 0)
 		{
 			//convert hex tchar* to byte
-			for (int i = 0; i < inputN; i++)
+			for (int i = 1; i < inputN; i++)
 			{
-				_stscanf_s(&report[i * 2], _T("%2hhx"), &outputbuf[i]);
+				_stscanf_s(&report[(i-1) * 2], _T("%2hhx"), &outputbuf[i]);
 			}
 			res = hid_write(curDevice, (unsigned char*)outputbuf, inputN);
 		}
@@ -80,9 +86,9 @@ void Extension::SendReport(TCHAR* report, int formatType)
 	else if (formatType == 1)//ascii
 	{
 		inputN = wcslen(report)+1;
-		for (int i = 0; i < inputN; i++)
+		for (int i = 1; i < inputN; i++)
 		{
-			outputbuf[i] = (unsigned char)report[i];
+			outputbuf[i] = (unsigned char)report[i-1];
 		}
 		res = hid_write(curDevice, (unsigned char*)outputbuf, inputN);
 	}

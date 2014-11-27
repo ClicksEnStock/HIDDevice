@@ -18,7 +18,8 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 	LinkAction(1, OpenDevice);
 	LinkAction(2, CloseDevice);
 	LinkAction(3, SendReport);
-	
+	LinkAction(4, SendReportWithId);
+
 	LinkCondition(0, IsDeviceOpened);
 	LinkCondition(1, OnDataReceived);
 

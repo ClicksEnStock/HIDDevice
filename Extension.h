@@ -52,6 +52,7 @@ public:
 	void OpenDevice(int deviceId);
 	void CloseDevice();
 	void SendReport(TCHAR* report, int formatType);
+	void SendReportWithId(TCHAR* report, int formatType, int reportId);
 	
     /// Conditions
 	bool IsDeviceOpened(int deviceId);
