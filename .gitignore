@@ -181,3 +181,10 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+HIDDevice.vcxproj
+DebugUnicode/vc120.idb
+DebugUnicode/HIDDevice.tlog/HIDDevice.lastbuildstate
+DebugUnicode/HIDDevice.tlog/CL.write.1.tlog
+DebugUnicode/HIDDevice.tlog/CL.read.1.tlog
+DebugUnicode/HIDDevice.tlog/cl.command.1.tlog
+DebugUnicode/vc120.idb
